@@ -1,6 +1,16 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page"
   xmlns:ui="nativescript-sak-components">
-  <StackLayout class="p-20">
-    <Label text="{{ message }}" class="t-20 text-center c-black" textWrap="true"/>
-  </StackLayout>
+  <GridLayout rows="auto,auto,auto,auto">
+    <Label row="0" text="SakTextField"></Label>
+    <ui:SakTextField row="1"
+      placeholderText="Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing" 
+      placeholderTextColour="996633"
+      isPlaceholderAnimated="true"
+      maxlength="15" 
+      ellipsize="true" 
+      letterColour="9900cc" 
+      regex="[a-zA-Z]+">
+    </ui:SakTextField>
+  </GridLayout>
+  
 </Page>
