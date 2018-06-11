@@ -1,27 +1,22 @@
 import {
     SakTextFieldBase,
-    placeholderTextProperty, placeholderTextColourProperty, isPlaceholderAnimatedProperty,
+    classProperty,
+    hintProperty, 
+    hintColorProperty,     
     maxlengthProperty,
     ellipsizeProperty,
     regexProperty,
-    letterColourProperty,
+    colorProperty
 } from "./sak-textfield.common";
 
 export class SakTextField extends SakTextFieldBase {
-
-    // added for TypeScript intellisense.
     nativeView: android.widget.EditText;
-
-    // textField: android.widget.EditText;
-    initialText: string;
 
     /**
      * Creates new native text field.
      */
     public createNativeView(): Object {
-        // Create new instance of android.widget.EditText.
         let textField = new android.widget.EditText(this._context);
-
         textField.setMaxLines(1);
 
         return textField;
@@ -31,8 +26,6 @@ export class SakTextField extends SakTextFieldBase {
      * Initializes properties/listeners of the native view.
      */
     initNativeView(): void {
-        // Attach the owner to nativeView.
-        // When nativeView is tapped we get the owning JS object through this field.
         (<any>this.nativeView).owner = this;
         super.initNativeView();
     }
@@ -44,27 +37,24 @@ export class SakTextField extends SakTextFieldBase {
      * so that it could be reused later.
      */
     disposeNativeView(): void {
-        // Remove reference from native view to this instance.
         (<any>this.nativeView).owner = null;
-
-        // If you want to recycle nativeView and have modified the nativeView
-        // without using Property or CssProperty (e.g. outside our property system - 'setNative' callbacks)
-        // you have to reset it to its initial state here.
         super.disposeNativeView();
     }
 
-    // transfer JS placeholderText value to nativeView.
-    [placeholderTextProperty.setNative](value: string) {
+    [classProperty.setNative](value: string) {
+        this.className = value;
+    }
+
+    [hintProperty.setNative](value: string) {
         this.nativeView.setHint(value);
     }
 
-    [placeholderTextColourProperty.setNative](value: string) {
+    [hintColorProperty.setNative](value: string) {
         if (value) {
             this.nativeView.setHintTextColor(android.graphics.Color.parseColor(`#${value}`));
         }
     }
 
-    // transfer JS maxlength value to nativeView.
     [maxlengthProperty.setNative](value: string) {
         if (value) {
             let fArray = [];
@@ -73,22 +63,16 @@ export class SakTextField extends SakTextFieldBase {
         }
     }
 
-    // transfer JS ellipsize value to nativeView.
     [ellipsizeProperty.setNative](value: boolean) {
         if (value) {
             this.nativeView.setEllipsize(android.text.TextUtils.TruncateAt.END);
         }
     }
 
-    [letterColourProperty.setNative](value: string) {
-        // console.log('chegou a cor ' + value + ' : ' + `#${value}`);
+    [colorProperty.setNative](value: string) {
         if (value) {
             this.nativeView.setTextColor(android.graphics.Color.parseColor(`#${value}`));
         }
-    }
-
-    [isPlaceholderAnimatedProperty.setNative](value: boolean) {
-
     }
 
     [regexProperty.setNative](regex: string) {

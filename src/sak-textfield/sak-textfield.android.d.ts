@@ -1,7 +1,8 @@
 import { SakTextFieldBase } from "./sak-textfield.common";
+import { View } from "tns-core-modules/ui/core/view";
+
 export declare class SakTextField extends SakTextFieldBase {
-    nativeView: android.widget.EditText;
-    initialText: string;
+    nativeView: TextField;
     createNativeView(): Object;
     initNativeView(): void;
     disposeNativeView(): void;

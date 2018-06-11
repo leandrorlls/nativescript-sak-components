@@ -1,26 +1,12 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page"
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page" 
   xmlns:sak="nativescript-sak-components">
   <GridLayout rows="auto,auto,auto,auto">
     <Label row="0" text="SakTextField"></Label>
-    <sak:SakTextField row="1"
-      placeholderText="Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing" 
-      placeholderTextColour="996633"
-      isPlaceholderAnimated="true"
-      maxlength="15" 
-      ellipsize="true" 
-      letterColour="9900cc" 
-      regex="[a-zA-Z]+">
+    <sak:SakTextField class="test-class" row="1" hint="Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing" hintColor="996633" maxlength="15" ellipsize="true" regex="[a-zA-Z]+">
     </sak:SakTextField>
     <Label row="2" text="SakTextInputLayout"></Label>
     <sak:SakTextInputLayout row="3">
-      <sak:SakTextField
-        placeholderText="Testing" 
-        placeholderTextColour="996633"
-        isPlaceholderAnimated="true"
-        maxlength="15" 
-        ellipsize="true" 
-        letterColour="9900cc" 
-        regex="[a-zA-Z]+">
+      <sak:SakTextField row="1" hint="Testing" hintColor="996633" maxlength="15" ellipsize="true" color="9900cc" regex="[a-zA-Z]+">
       </sak:SakTextField>
     </sak:SakTextInputLayout>
   </GridLayout>

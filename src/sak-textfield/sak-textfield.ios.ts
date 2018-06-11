@@ -1,10 +1,11 @@
 import {
     SakTextFieldBase,
-    placeholderTextProperty, placeholderTextColourProperty, isPlaceholderAnimatedProperty,
+    hintProperty, 
+    hintColorProperty,
     maxlengthProperty,
     ellipsizeProperty,
     regexProperty,
-    letterColourProperty,
+    colorProperty
 } from "./sak-textfield.common";
 
 export class SakTextField extends SakTextFieldBase {
