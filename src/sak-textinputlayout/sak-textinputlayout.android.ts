@@ -29,7 +29,7 @@ import { SakTextField } from "../sak-textfield/sak-textfield";
 
 export class SakTextInputLayout extends SakTextInputLayoutBase {
 
-    nativeView: android.support.design.widget.TextInputLayout;
+    nativeView: any;
 
     private _textField: SakTextField;
 
