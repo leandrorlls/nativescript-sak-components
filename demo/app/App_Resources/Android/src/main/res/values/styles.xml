@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <style name="TextInputLayoutStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/green</item>
+        <item name="android:textColorHint">@color/green</item>
+        <item name="colorAccent">@color/green</item>
+        <item name="colorControlNormal">@color/green</item>
+        <item name="colorControlActivated">@color/green</item>
+        <item name="colorControlHighlight">@color/green</item>
+        <item name="android:textColorHighlight">@color/green</item>
+    </style>
+
     <!-- theme to use FOR launch screen-->
     <style name="LaunchScreenThemeBase" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="toolbarStyle">@style/NativeScriptToolbarStyle</item>
@@ -10,8 +20,8 @@
         <item name="colorAccent">@color/ns_accent</item>
 
         <item name="android:windowBackground">@drawable/splash_screen</item>
-        
-        <item name="android:windowActionBarOverlay">true</item>  
+
+        <item name="android:windowActionBarOverlay">true</item>
         <item name="android:windowTranslucentStatus">true</item>
 
     </style>

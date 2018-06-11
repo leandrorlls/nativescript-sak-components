@@ -11,10 +11,7 @@ export const regexProperty = new Property<SakTextFieldBase, string>({ name: "reg
 export const colorProperty = new Property<SakTextFieldBase, string>({ name: "color" });
 
 export abstract class SakTextFieldBase extends View implements SakTextFieldDefinition {
-    // constructor() {
-    //     super();
-    //     this.className = classProperty.get();
-    // } 
+    
 }
 
 classProperty.register(SakTextFieldBase);

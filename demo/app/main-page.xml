@@ -5,7 +5,7 @@
     <sak:SakTextField class="test-class" row="1" hint="Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing" hintColor="996633" maxlength="15" ellipsize="true" regex="[a-zA-Z]+">
     </sak:SakTextField>
     <Label row="2" text="SakTextInputLayout"></Label>
-    <sak:SakTextInputLayout row="3">
+    <sak:SakTextInputLayout row="3" hintTextAppearance="TextInputLayoutStyle">
       <sak:SakTextField row="1" hint="Testing" hintColor="996633" maxlength="15" ellipsize="true" color="9900cc" regex="[a-zA-Z]+">
       </sak:SakTextField>
     </sak:SakTextInputLayout>

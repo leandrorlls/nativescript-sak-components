@@ -21,11 +21,18 @@ declare namespace android {
     }
 }
 
-import { SakTextInputLayoutBase } from "./sak-textinputlayout.common";
+import { SakTextInputLayoutBase, hintTextAppearanceProperty } from "./sak-textinputlayout.common";
 import { View, booleanConverter } from "tns-core-modules/ui/core/view";
 import { TextView } from 'tns-core-modules/ui/text-view';
 import { TextField } from 'tns-core-modules/ui/text-field';
 import { SakTextField } from "../sak-textfield/sak-textfield";
+
+function getStyleResourceId(context: any, name: string) {
+    if (!context || (name || '').length === 0) {
+        return null;
+    }
+    return context.getResources().getIdentifier(name, 'style', context.getPackageName());
+}
 
 export class SakTextInputLayout extends SakTextInputLayoutBase {
 
@@ -109,5 +116,12 @@ export class SakTextInputLayout extends SakTextInputLayoutBase {
     disposeNativeView(): void {
         (<any>this.nativeView).owner = null;
         super.disposeNativeView();
+    }
+
+    [hintTextAppearanceProperty.setNative](value: string) {
+        const resourceId = getStyleResourceId(this._context, value);
+        if (value && resourceId) {
+            this.nativeView.setHintTextAppearance(resourceId);
+        }
     }
 }
