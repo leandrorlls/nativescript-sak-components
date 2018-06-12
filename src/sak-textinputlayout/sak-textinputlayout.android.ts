@@ -1,5 +1,9 @@
-
 declare namespace android {
+    namespace graphics {
+        class Color {
+            static parseColor(color: string): Number;
+        }
+    }
     namespace support {
         namespace design {
             namespace widget {
@@ -26,6 +30,7 @@ import { View, booleanConverter } from "tns-core-modules/ui/core/view";
 import { TextView } from 'tns-core-modules/ui/text-view';
 import { TextField } from 'tns-core-modules/ui/text-field';
 import { SakTextField } from "../sak-textfield/sak-textfield";
+import { hintColorProperty } from "../sak-textfield/sak-textfield.common";
 
 function getStyleResourceId(context: any, name: string) {
     if (!context || (name || '').length === 0) {
@@ -95,7 +100,7 @@ export class SakTextInputLayout extends SakTextInputLayoutBase {
             if (current) {
                 nativeView.removeView(current);
             }
-            
+
             nativeView.addView(nativeTextField, 0, layoutParams);
         }
 

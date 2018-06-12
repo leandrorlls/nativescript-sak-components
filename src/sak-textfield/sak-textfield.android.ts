@@ -1,12 +1,15 @@
 import {
     SakTextFieldBase,
     classProperty,
-    hintProperty, 
-    hintColorProperty,     
+    hintProperty,
+    hintColorProperty,
     maxlengthProperty,
     ellipsizeProperty,
     regexProperty,
-    colorProperty
+    colorProperty,
+    backgroundColorProperty,
+    fontProperty,
+    textSizeProperty
 } from "./sak-textfield.common";
 
 export class SakTextField extends SakTextFieldBase {
@@ -69,9 +72,27 @@ export class SakTextField extends SakTextFieldBase {
         }
     }
 
+    [fontProperty.setNative](value: string) {
+        if (value) {
+            this.nativeView.setTypeface(android.graphics.Typeface.createFromAsset(this._context.getAssets(), `fonts/${value}`));
+        }
+    }
+
     [colorProperty.setNative](value: string) {
         if (value) {
             this.nativeView.setTextColor(android.graphics.Color.parseColor(`#${value}`));
+        }
+    }
+
+    [textSizeProperty.setNative](value: string) {
+        if (value) {
+            this.nativeView.setTextSize(Number(value));
+        }
+    }
+
+    [backgroundColorProperty.setNative](value: string) {
+        if (value) {
+            this.nativeView.setBackgroundColor(android.graphics.Color.parseColor(`#${value}`));
         }
     }
 
@@ -86,10 +107,10 @@ export class SakTextField extends SakTextFieldBase {
 
             },
             afterTextChanged(s: android.text.Editable): void {
-                if (regex && regex != "") {
+                if (regex && regex !== "") {
                     let text = s.toString();
                     let length = s.length();
-    
+
                     if (length > 0 && !java.util.regex.Pattern.matches(regex, text)) {
                         s.delete(length - 1, length);
                     }

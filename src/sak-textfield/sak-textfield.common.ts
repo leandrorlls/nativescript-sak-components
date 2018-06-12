@@ -9,9 +9,12 @@ export const maxlengthProperty = new Property<SakTextFieldBase, string>({ name: 
 export const ellipsizeProperty = new Property<SakTextFieldBase, boolean>({ name: "ellipsize" });
 export const regexProperty = new Property<SakTextFieldBase, string>({ name: "regex" });
 export const colorProperty = new Property<SakTextFieldBase, string>({ name: "color" });
+export const backgroundColorProperty = new Property<SakTextFieldBase, string>({ name: "backgroundColor" });
+export const fontProperty = new Property<SakTextFieldBase, string>({ name: "font" });
+export const textSizeProperty = new Property<SakTextFieldBase, string>({ name: "textSize" });
 
 export abstract class SakTextFieldBase extends View implements SakTextFieldDefinition {
-    
+
 }
 
 classProperty.register(SakTextFieldBase);
@@ -21,3 +24,6 @@ maxlengthProperty.register(SakTextFieldBase);
 ellipsizeProperty.register(SakTextFieldBase);
 regexProperty.register(SakTextFieldBase);
 colorProperty.register(SakTextFieldBase);
+backgroundColorProperty.register(SakTextFieldBase);
+fontProperty.register(SakTextFieldBase);
+textSizeProperty.register(SakTextFieldBase);

@@ -8,5 +8,8 @@ export declare const maxlengthProperty: Property<SakTextFieldBase, string>;
 export declare const ellipsizeProperty: Property<SakTextFieldBase, boolean>;
 export declare const regexProperty: Property<SakTextFieldBase, string>;
 export declare const colorProperty: Property<SakTextFieldBase, string>;
+export declare const backgroundColorProperty: Property<SakTextFieldBase, string>;
+export declare const fontProperty: Property<SakTextFieldBase, string>;
+export declare const textSizeProperty: Property<SakTextFieldBase, string>;
 export declare abstract class SakTextFieldBase extends View implements SakTextFieldDefinition {
 }

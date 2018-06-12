@@ -6,8 +6,5 @@ export class HelloWorldModel extends Observable {
   constructor() {
     super();
 
-    // this.sakComponents = new SakTextField();
-    // this.message = this.sakComponents.message;
-    // this.sakComponents.sakTe
   }
 }
