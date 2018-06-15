@@ -2,18 +2,36 @@
   xmlns:sak="nativescript-sak-components">
   <GridLayout rows="auto,auto,auto,auto,auto,auto">
     <Label row="0" text="SakTextField"></Label>
-    <sak:SakTextField class="test-class" hint="Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing" maxLength="15" ellipsize="true" regex="[a-zA-Z',.-]+">
+    <sak:SakTextField 
+      class="test-class" 
+      hint="Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing" 
+      maxLength="15" 
+      ellipsize="true" 
+      regex="[a-zA-Z',.-]+">
     </sak:SakTextField>
 
     <Label row="2" text="SakTextInputLayout"></Label>
     <ios>
       <Label row="2" text="SakTextInputLayout"></Label>
-      <sak:SakTextInputLayout row="3" title="Testing..." hint="Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing" maxLength="15" ellipsize="true" regex="[a-zA-Z',.-]+">>
+      <sak:SakTextInputLayout 
+        row="3" 
+        title="Testing..." 
+        hint="Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing" 
+        maxLength="15" 
+        ellipsize="true" 
+        regex="[a-zA-Z',.-]+">
       </sak:SakTextInputLayout>
     </ios>
     <android>
-      <sak:SakTextInputLayout row="3" hintTextAppearance="TextInputLayoutStyle">
-        <sak:SakTextField class="test-class" hint="Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing" maxLength="15" ellipsize="true" regex="[a-zA-Z',.-]+">
+      <sak:SakTextInputLayout 
+        row="3" 
+        hintTextAppearance="TextInputLayoutStyle">
+        <sak:SakTextField 
+          class="test-class" 
+          hint="Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing" 
+          maxLength="15" 
+          ellipsize="true" 
+          regex="[a-zA-Z',.-]+">
         </sak:SakTextField>
       </sak:SakTextInputLayout>
     </android>
