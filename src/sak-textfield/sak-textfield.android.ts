@@ -25,9 +25,16 @@ export class SakTextField extends SakTextFieldBase {
                 if (regex && regex !== "") {
                     let text = s.toString();
                     let length = s.length();
-
+ 
                     if (length > 0 && !java.util.regex.Pattern.matches(regex, text)) {
-                        s.delete(length - 1, length);
+ 
+                        for (let i = 0; i < length; i++) {
+                            let character = text[i];
+ 
+                            if (!java.util.regex.Pattern.matches(regex, character)) {
+                                s.delete(i, Math.abs(i + 1));
+                            }
+                        }
                     }
                 }
             }

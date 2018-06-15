@@ -1,5 +1,5 @@
-import { TextField } from 'tns-core-modules/ui/text-field';
 import { Color, Property, SakTextInputLayoutBase } from './sak-textinputlayout.common';
+import { SakTextField } from '../sak-textfield/sak-textfield';
 export declare const disabledColorProperty: any;
 export declare const hintProperty: Property<SakTextInputLayout, string>;
 export declare const titleProperty: Property<SakTextInputLayout, string>;
@@ -19,7 +19,7 @@ export declare const iconTextProperty: Property<SakTextInputLayout, string>;
 export declare const iconMarginBottomProperty: Property<SakTextInputLayout, number>;
 export declare const iconMarginLeftProperty: Property<SakTextInputLayout, number>;
 export declare const iconRotationDegreesProperty: Property<SakTextInputLayout, number>;
-export declare class SakTextInputLayout extends TextField implements SakTextInputLayoutBase {
+export declare class SakTextInputLayout extends SakTextField implements SakTextInputLayoutBase {
     hint: string;
     error: string;
     disabledColor: Color;

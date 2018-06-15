@@ -1,11 +1,10 @@
-declare var ios: any;
 declare var SkyFloatingLabelTextField: any;
 declare var SkyFloatingLabelTextFieldWithIcon: any;
 
-import { Font } from 'tns-core-modules/ui/styling/font';
 import { TextField } from 'tns-core-modules/ui/text-field';
 import { isEnabledProperty } from 'tns-core-modules/ui/core/view';
-import { SakTextInputLayoutBase as CommonTextInputLayout, Color, Property, SakTextInputLayoutBase } from './sak-textinputlayout.common';
+import { Color, Property, SakTextInputLayoutBase } from './sak-textinputlayout.common';
+import { SakTextField } from '../sak-textfield/sak-textfield';
 
 export const disabledColorProperty = new Property<SakTextInputLayout, Color>({
     name: 'disabledColor',
@@ -115,7 +114,7 @@ export const iconRotationDegreesProperty = new Property<SakTextInputLayout, numb
     valueConverter: v => parseFloat(v)
 });
 
-export class SakTextInputLayout extends TextField implements SakTextInputLayoutBase {
+export class SakTextInputLayout extends SakTextField implements SakTextInputLayoutBase {
 
     public hint: string;
     public error: string;
