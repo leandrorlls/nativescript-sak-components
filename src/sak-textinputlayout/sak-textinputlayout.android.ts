@@ -1,15 +1,113 @@
-import { SakTextInputLayoutBase } from "./sak-textinputlayout.common";
+declare namespace android {
+    namespace graphics {
+        class Color {
+            static parseColor(color: string): Number;
+        }
+    }
+    namespace support {
+        namespace design {
+            namespace widget {
+                class TextInputLayout {
+                    constructor(context: any);
+                    setHint(hint: string): void;
+                    setError(error: string): void;
+                    setHintAnimationEnabled(value: boolean): void;
+                    setHintTextAppearance(resourceId: number): void;
+                    setErrorTextAppearance(resourceId: number): void;
+                    setErrorEnabled(enabled: boolean): void;
+                    setCounterEnabled(enabled: boolean): void;
+                    addView(child, index: number, params): void;
+                    removeView(child): void;
+                    getEditText(): any;
+                }
+            }
+        }
+    }
+}
+
+import { SakTextInputLayoutBase, hintTextAppearanceProperty } from "./sak-textinputlayout.common";
+import { View } from "tns-core-modules/ui/core/view";
+import { SakTextField } from "../sak-textfield/sak-textfield";
+
+function getStyleResourceId(context: any, name: string) {
+    if (!context || (name || '').length === 0) {
+        return null;
+    }
+    return context.getResources().getIdentifier(name, 'style', context.getPackageName());
+}
 
 export class SakTextInputLayout extends SakTextInputLayoutBase {
 
-    nativeView: android.widget.EditText;
+    nativeView: any;
+
+    private _textField: SakTextField;
+
+    get textField(): SakTextField { return this._textField; }
+    set textField(tf: SakTextField) {
+        const old = this._textField;
+        if (old) {
+            this._removeView(old);
+        }
+
+        this._textField = tf;
+        if (tf) {
+            this._addView(tf);
+        }
+
+        this.setupTextView();
+    }
+
+    get _childrenCount(): number {
+        return this._textField ? 1 : 0;
+    }
+
+    public _addChildFromBuilder(name: string, child: SakTextField): void {
+        if (!(child instanceof SakTextField)) {
+            throw new Error('TextInputLayout may only have a <SakTextField> as a child');
+        }
+
+        this.textField = child;
+    }
+
+    public eachChildView(callback: (child: View) => boolean) {
+        if (this._textField) {
+            callback(this._textField);
+        }
+    }
+
+    public onLoaded(): void {
+        super.onLoaded();
+        this.setupTextView();
+    }
+
+    private setupTextView() {
+        if (!this.isLoaded) {
+            return;
+        }
+
+        const textField = this._textField;
+        const nativeView = this.nativeView;
+        const layoutParams = new (<any>android).widget.LinearLayout.LayoutParams(
+            (<any>android).widget.LinearLayout.LayoutParams.MATCH_PARENT,
+            (<any>android).widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        const current = nativeView.getEditText();
+        const nativeTextField = textField.nativeView;
+        if (current !== nativeTextField) {
+            if (current) {
+                nativeView.removeView(current);
+            }
+
+            nativeView.addView(nativeTextField, 0, layoutParams);
+        }
+
+        const txtValue = textField.nativeView.getText();
+        nativeTextField.setText('');
+        nativeTextField.setText(txtValue);
+    }
 
     public createNativeView(): Object {
-        let textField = new android.widget.EditText(this._context);
-
-        textField.setMaxLines(1);
-
-        return textField;
+        return new android.support.design.widget.TextInputLayout(this._context);
     }
 
     initNativeView(): void {
@@ -20,5 +118,12 @@ export class SakTextInputLayout extends SakTextInputLayoutBase {
     disposeNativeView(): void {
         (<any>this.nativeView).owner = null;
         super.disposeNativeView();
+    }
+
+    [hintTextAppearanceProperty.setNative](value: string) {
+        const resourceId = getStyleResourceId(this._context, value);
+        if (value && resourceId) {
+            this.nativeView.setHintTextAppearance(resourceId);
+        }
     }
 }

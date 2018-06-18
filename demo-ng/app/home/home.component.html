@@ -1,0 +1,37 @@
+<GridLayout xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page" rows="auto,auto,auto,auto,auto,auto"
+  xmlns:sak="nativescript-sak-components">
+  <Label row="0" text="SakTextField"></Label>
+  <sak:SakTextField 
+    row="1" 
+    class="test-class" 
+    hint="Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing1111"
+    maxLength="15" 
+    ellipsize="true" 
+    regex="[a-zA-Z',.-]+">
+  </sak:SakTextField>
+
+  <Label row="2" text="SakTextInputLayout"></Label>
+  <ios>
+    <sak:SakTextInputLayout 
+      row="3" 
+      title="Testing..." 
+      hint="Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing"
+      maxLength="15" 
+      ellipsize="true" 
+      regex="[a-zA-Z',.-]+">>
+    </sak:SakTextInputLayout>
+  </ios>
+  <android>
+    <sak:SakTextInputLayout 
+      row="3" 
+      hintTextAppearance="TextInputLayoutStyle">
+      <sak:SakTextField 
+        class="test-class" 
+        hint="Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing"
+        maxLength="15" 
+        ellipsize="true" 
+        regex="[a-zA-Z',.-]+">
+      </sak:SakTextField>
+    </sak:SakTextInputLayout>
+  </android>
+</GridLayout>

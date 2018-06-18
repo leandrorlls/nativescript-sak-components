@@ -1,16 +1,39 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page"
-  xmlns:ui="nativescript-sak-components">
-  <GridLayout rows="auto,auto,auto,auto">
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page" 
+  xmlns:sak="nativescript-sak-components">
+  <GridLayout rows="auto,auto,auto,auto,auto,auto">
     <Label row="0" text="SakTextField"></Label>
-    <ui:SakTextField row="1"
-      placeholderText="Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing" 
-      placeholderTextColour="996633"
-      isPlaceholderAnimated="true"
-      maxlength="15" 
+    <sak:SakTextField 
+      class="test-class" 
+      hint="Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing" 
+      maxLength="15" 
       ellipsize="true" 
-      letterColour="9900cc" 
-      regex="[a-zA-Z]+">
-    </ui:SakTextField>
+      regex="[a-zA-Z',.-]+">
+    </sak:SakTextField>
+
+    <Label row="2" text="SakTextInputLayout"></Label>
+    <ios>
+      <Label row="2" text="SakTextInputLayout"></Label>
+      <sak:SakTextInputLayout 
+        row="3" 
+        title="Testing..." 
+        hint="Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing" 
+        maxLength="15" 
+        ellipsize="true" 
+        regex="[a-zA-Z',.-]+">
+      </sak:SakTextInputLayout>
+    </ios>
+    <android>
+      <sak:SakTextInputLayout 
+        row="3" 
+        hintTextAppearance="TextInputLayoutStyle">
+        <sak:SakTextField 
+          class="test-class" 
+          hint="Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing" 
+          maxLength="15" 
+          ellipsize="true" 
+          regex="[a-zA-Z',.-]+">
+        </sak:SakTextField>
+      </sak:SakTextInputLayout>
+    </android>
   </GridLayout>
-  
 </Page>

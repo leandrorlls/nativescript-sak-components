@@ -5,13 +5,13 @@
     <style name="LaunchScreenThemeBase" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="toolbarStyle">@style/NativeScriptToolbarStyle</item>
 
-        <item name="colorPrimary">@color/ns_primary</item>
+        <item name="colorPrimary">@color/ns_primary</item>dsfdsfds
         <item name="colorPrimaryDark">@color/ns_primaryDark</item>
         <item name="colorAccent">@color/ns_accent</item>
 
         <item name="android:windowBackground">@drawable/splash_screen</item>
-        
-        <item name="android:windowActionBarOverlay">true</item>  
+
+        <item name="android:windowActionBarOverlay">true</item>
         <item name="android:windowTranslucentStatus">true</item>
 
     </style>
@@ -23,18 +23,25 @@
     <style name="AppThemeBase" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="toolbarStyle">@style/NativeScriptToolbarStyle</item>
 
-        <item name="colorPrimary">@color/ns_primary</item>
-        <item name="colorPrimaryDark">@color/ns_primaryDark</item>
-        <item name="colorAccent">@color/ns_accent</item>
-
+        <item name="colorPrimary">@color/baseColor</item>
+        <item name="colorPrimaryDark">@color/baseColor</item>
+        <item name="colorAccent">@color/baseColor</item>
+        <item name="android:textColorHint">@color/hintBeforeColor</item>
+        <item name="android:inputType">textEmailAddress</item>
+         
     </style>
 
     <style name="AppTheme" parent="AppThemeBase">
     </style>
 
+     <style name="TextInputLayoutStyle" parent="AppTheme">
+        <item name="android:textColor">@color/hintActiveColor</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
     <!-- theme for actioon-bar -->
     <style name="NativeScriptToolbarStyleBase" parent="Widget.AppCompat.Toolbar">
-        <item name="android:background">@color/ns_primary</item>
+        
         <item name="theme">@style/ThemeOverlay.AppCompat.ActionBar</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat</item>
 
