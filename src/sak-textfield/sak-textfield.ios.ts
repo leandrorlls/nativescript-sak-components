@@ -58,8 +58,12 @@ export class SakTextFieldDelegate extends NSObject implements UITextFieldDelegat
     public textFieldShouldChangeCharactersInRangeReplacementString(textField: UITextField, range: NSRange, replacementString: string): boolean {
         if (replacementString && replacementString.length > 0) {
             const owner = this._owner.get();
-            let pattern = new RegExp(owner.regex);
 
+            if ((owner.maxLength <= textField.text.length)&&(replacementString.length > range.length)) {
+                return false;
+            }
+
+            let pattern = new RegExp(owner.regex);
             return pattern.test(replacementString);
         } else {
             return true;
