@@ -40,7 +40,7 @@ export class SakTextFieldDelegate extends NSObject implements UITextFieldDelegat
     }
 
     public textFieldDidBeginEditing(textField: UITextField) {
-        textField.selectedTextRange = textField.textRangeFromPositionToPosition(textField.beginningOfDocument, textField.beginningOfDocument);
+        textField.selectedTextRange = textField.textRangeFromPositionToPosition(textField.endOfDocument, textField.endOfDocument);
     }
 
     public textFieldDidEndEditing(textField: UITextField) {
