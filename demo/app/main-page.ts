@@ -14,8 +14,8 @@ export function onTappedToWrite(args: EventData) {
     const page = <pages.Page>args.object;
     const vm = <HelloWorldModel>page.bindingContext;
 
-    vm.simpleText = "diana";
-    vm.textLayoutText = "leandro";
+    vm.simpleText = "simpleText";
+    vm.textLayoutText = "textLayoutText";
 }
 
 
