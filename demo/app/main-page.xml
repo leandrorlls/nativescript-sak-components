@@ -1,39 +1,17 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page" 
   xmlns:sak="nativescript-sak-components">
-  <GridLayout rows="auto,auto,auto,auto,auto,auto">
-    <Label row="0" text="SakTextField"></Label>
-    <sak:SakTextField 
-      class="test-class" 
-      hint="Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing" 
-      maxLength="15" 
-      ellipsize="true" 
-      regex="[a-zA-Z',.-]+">
-    </sak:SakTextField>
-
-    <Label row="2" text="SakTextInputLayout"></Label>
+  <GridLayout rows="auto,auto,auto,auto">
+    <sak:SakTextField row="0" class="test-class" hint="Testing" maxLength="15" ellipsize="true" text="{{ simpleText }}" />
     <ios>
-      <Label row="2" text="SakTextInputLayout"></Label>
-      <sak:SakTextInputLayout 
-        row="3" 
-        title="Testing..." 
-        hint="Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing" 
-        maxLength="15" 
-        ellipsize="true" 
-        regex="[a-zA-Z',.-]+">
-      </sak:SakTextInputLayout>
+      <sak:SakTextInputLayout row="1" title="Testing..." hint="Testing" maxLength="15" ellipsize="true" text="{{ textLayoutText }}" />
     </ios>
     <android>
-      <sak:SakTextInputLayout 
-        row="3" 
-        hintTextAppearance="TextInputLayoutStyle">
-        <sak:SakTextField 
-          class="test-class" 
-          hint="Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing" 
-          maxLength="15" 
-          ellipsize="true" 
-          regex="[a-zA-Z',.-]+">
-        </sak:SakTextField>
+      <sak:SakTextInputLayout row="1" hintTextAppearance="TextInputLayoutStyle">
+        <sak:SakTextField class="test-class" hint="Testing" maxLength="15" ellipsize="true" text="{{ textLayoutText }}" />
       </sak:SakTextInputLayout>
     </android>
+
+    <Button row="2" text="Tap me to write!" tap="onTappedToWrite" />
+    <Button row="3" text="Tap me to read!" tap="onTappedToRead" />
   </GridLayout>
 </Page>
