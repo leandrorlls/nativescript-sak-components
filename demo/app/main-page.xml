@@ -1,13 +1,13 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page" 
   xmlns:sak="nativescript-sak-components">
   <GridLayout rows="auto,auto,auto,auto">
-    <sak:SakTextField row="0" class="test-class" hint="Testing" maxLength="15" ellipsize="true" text="{{ simpleText }}" />
+    <sak:SakTextField row="0" class="test-class" hint="Testing" maxLength="15" ellipsize="true" text="{{ textOne }}" regex="[a-zA-Z',.-]+" />
     <ios>
-      <sak:SakTextInputLayout row="1" title="Testing..." hint="Testing" maxLength="15" ellipsize="true" text="{{ textLayoutText }}" />
+      <sak:SakTextInputLayout row="1" title="Testing..." hint="Testing" maxLength="15" ellipsize="true" text="{{ textTwo }}" regex="[a-zA-Z',.-]+" />
     </ios>
     <android>
       <sak:SakTextInputLayout row="1" hintTextAppearance="TextInputLayoutStyle">
-        <sak:SakTextField class="test-class" hint="Testing" maxLength="15" ellipsize="true" text="{{ textLayoutText }}" />
+        <sak:SakTextField class="test-class" hint="Testing" maxLength="15" ellipsize="true" text="{{ textTwo }}" regex="[a-zA-Z',.-]+" />
       </sak:SakTextInputLayout>
     </android>
 

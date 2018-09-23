@@ -14,8 +14,8 @@ export function onTappedToWrite(args: EventData) {
     const page = <pages.Page>args.object;
     const vm = <HelloWorldModel>page.bindingContext;
 
-    vm.simpleText = "simpleText";
-    vm.textLayoutText = "textLayoutText";
+    vm.textOne = "textOne";
+    vm.textTwo = "textTwo";
 }
 
 
@@ -23,5 +23,5 @@ export function onTappedToRead(args: EventData) {
     const page = <pages.Page>args.object;
     const vm = <HelloWorldModel>page.bindingContext;
 
-    alert(`simpleText: ${vm.simpleText} | textLayoutText: ${vm.textLayoutText}`);
+    alert(`simpleText: ${vm.textOne} | textLayoutText: ${vm.textTwo}`);
 }
