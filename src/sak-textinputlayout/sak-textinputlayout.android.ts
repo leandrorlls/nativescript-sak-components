@@ -25,8 +25,10 @@ declare namespace android {
     }
 }
 
-import { SakTextInputLayoutBase, hintTextAppearanceProperty } from "./sak-textinputlayout.common";
-import { View } from "tns-core-modules/ui/core/view";
+import { SakTextInputLayoutBase, hintProperty, errorProperty, Property } from "./sak-textinputlayout.common";
+import { View, booleanConverter } from "tns-core-modules/ui/core/view";
+import { TextView } from 'tns-core-modules/ui/text-view';
+import { TextField } from 'tns-core-modules/ui/text-field';
 import { SakTextField } from "../sak-textfield/sak-textfield";
 
 function getStyleResourceId(context: any, name: string) {
@@ -36,14 +38,36 @@ function getStyleResourceId(context: any, name: string) {
     return context.getResources().getIdentifier(name, 'style', context.getPackageName());
 }
 
+/*** android-only properties ***/
+export const hintAnimationEnabledProperty = new Property<SakTextInputLayout, boolean>({
+    name: "hintAnimationEnabled", valueConverter: booleanConverter
+});
+
+export const hintTextAppearanceProperty = new Property<SakTextInputLayout, string>({
+    name: "hintTextAppearance"
+});
+
+export const counterEnabledProperty = new Property<SakTextInputLayout, boolean>({
+    name: "counterEnabled", affectsLayout: true, valueConverter: booleanConverter
+});
+
+export const errorTextAppearanceProperty = new Property<SakTextInputLayout, string>({
+    name: "errorTextAppearance"
+});
+
+export const errorEnabledProperty = new Property<SakTextInputLayout, boolean>({
+    name: "errorEnabled", affectsLayout: true, valueConverter: booleanConverter
+});
+
+
 export class SakTextInputLayout extends SakTextInputLayoutBase {
 
     nativeView: any;
 
-    private _textField: SakTextField;
+    private _textField: SakTextField | TextField | TextView;
 
-    get textField(): SakTextField { return this._textField; }
-    set textField(tf: SakTextField) {
+    get textField(): SakTextField | TextField | TextView { return this._textField; }
+    set textField(tf: SakTextField | TextField | TextView) {
         const old = this._textField;
         if (old) {
             this._removeView(old);
@@ -62,7 +86,7 @@ export class SakTextInputLayout extends SakTextInputLayoutBase {
     }
 
     public _addChildFromBuilder(name: string, child: SakTextField): void {
-        if (!(child instanceof SakTextField)) {
+        if (!(child instanceof SakTextField) || !(child instanceof TextView || child instanceof TextField)) {
             throw new Error('TextInputLayout may only have a <SakTextField> as a child');
         }
 
@@ -120,10 +144,50 @@ export class SakTextInputLayout extends SakTextInputLayoutBase {
         super.disposeNativeView();
     }
 
+    [hintProperty.setNative](value: string) {
+        this.nativeView.setHint(value);
+    }
+
+    [hintAnimationEnabledProperty.setNative](value: boolean) {
+        this.nativeView.setHintAnimationEnabled(value);
+    }
+
     [hintTextAppearanceProperty.setNative](value: string) {
         const resourceId = getStyleResourceId(this._context, value);
         if (value && resourceId) {
             this.nativeView.setHintTextAppearance(resourceId);
         }
     }
+
+    [errorTextAppearanceProperty.setNative](value: string) {
+        const resourceId = getStyleResourceId(this._context, value);
+        if (value && resourceId) {
+            this.nativeView.setErrorTextAppearance(resourceId);
+        }
+    }
+
+    [errorEnabledProperty.setNative](value: boolean) {
+        if (!value && (this.error || '').length > 0) {
+            this.error = '';
+        }
+        this.nativeView.setErrorEnabled(value);
+    }
+
+    [errorProperty.setNative](value: string) {
+        // NOTE: Android natively sets errorEnabled to true if this is not null
+        this.nativeView.setError(value || '');
+        if ((value || '').length > 0) {
+            this.errorEnabled = true;
+        }
+    }
+
+    [counterEnabledProperty.setNative](value: boolean) {
+        this.nativeView.setCounterEnabled(value);
+    }
 }
+
+hintAnimationEnabledProperty.register(SakTextInputLayout);
+hintTextAppearanceProperty.register(SakTextInputLayout);
+errorTextAppearanceProperty.register(SakTextInputLayout);
+counterEnabledProperty.register(SakTextInputLayout);
+errorEnabledProperty.register(SakTextInputLayout);

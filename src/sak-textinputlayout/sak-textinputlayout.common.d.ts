@@ -1,7 +1,33 @@
 import { SakTextInputLayout as SakTextInputLayoutDefinition } from "./sak-textinputlayout";
-import { View, Property } from "tns-core-modules/ui/core/view";
 import { Color } from "tns-core-modules/color";
+import { View } from "tns-core-modules/ui/core/view";
+import { Property } from "tns-core-modules/ui/core/properties";
 export { Property, Color };
-export declare const hintTextAppearanceProperty: Property<SakTextInputLayoutBase, string>;
 export declare abstract class SakTextInputLayoutBase extends View implements SakTextInputLayoutDefinition {
+    hint: string;
+    error: string;
+    hintAnimationEnabled?: boolean;
+    hintTextAppearance?: string;
+    errorTextAppearance?: string;
+    counterEnabled?: boolean;
+    errorEnabled?: boolean;
+    disabledColor?: Color;
+    title?: string;
+    tintColor?: Color;
+    lineColor?: Color;
+    selectedTintColor?: Color;
+    selectedLineColor?: Color;
+    selectedTitleColor?: Color;
+    lineHeight?: number;
+    selectedLineHeight?: number;
+    errorColor?: Color;
+    iconColor?: Color;
+    selectedIconColor?: Color;
+    iconFont?: string;
+    iconText?: string;
+    iconMarginBottom?: number;
+    iconMarginLeft?: number;
+    iconRotationDegrees?: number;
 }
+export declare const errorProperty: Property<SakTextInputLayoutBase, string>;
+export declare const hintProperty: Property<SakTextInputLayoutBase, string>;
